@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F55E0602833ECA0008887F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55E05F2833ECA0008887F2 /* AppDelegate.swift */; };
 		0F55E0622833ECA0008887F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55E0612833ECA0008887F2 /* SceneDelegate.swift */; };
-		0F55E0642833ECA1008887F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55E0632833ECA1008887F2 /* ViewController.swift */; };
-		0F55E0672833ECA1008887F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F55E0652833ECA1008887F2 /* Main.storyboard */; };
 		0F55E06A2833ECA1008887F2 /* Flickr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F55E0682833ECA1008887F2 /* Flickr.xcdatamodeld */; };
 		0F55E06C2833ECA2008887F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F55E06B2833ECA2008887F2 /* Assets.xcassets */; };
 		0F55E06F2833ECA2008887F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F55E06D2833ECA2008887F2 /* LaunchScreen.storyboard */; };
@@ -40,12 +38,10 @@
 		0F55E05C2833ECA0008887F2 /* Flickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F55E05F2833ECA0008887F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F55E0612833ECA0008887F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0F55E0632833ECA1008887F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0F55E0662833ECA1008887F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F55E0692833ECA1008887F2 /* Flickr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flickr.xcdatamodel; sourceTree = "<group>"; };
 		0F55E06B2833ECA2008887F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F55E06E2833ECA2008887F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0F55E0702833ECA2008887F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F55E0702833ECA2008887F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Flickr/Common/Configuration/Info.plist; sourceTree = SOURCE_ROOT; };
 		0F55E0752833ECA2008887F2 /* FlickrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F55E0792833ECA2008887F2 /* FlickrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrTests.swift; sourceTree = "<group>"; };
 		0F55E07F2833ECA2008887F2 /* FlickrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,14 +97,9 @@
 		0F55E05E2833ECA0008887F2 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
-				0F55E05F2833ECA0008887F2 /* AppDelegate.swift */,
-				0F55E0612833ECA0008887F2 /* SceneDelegate.swift */,
-				0F55E0632833ECA1008887F2 /* ViewController.swift */,
-				0F55E0652833ECA1008887F2 /* Main.storyboard */,
-				0F55E06B2833ECA2008887F2 /* Assets.xcassets */,
-				0F55E06D2833ECA2008887F2 /* LaunchScreen.storyboard */,
-				0F55E0702833ECA2008887F2 /* Info.plist */,
-				0F55E0682833ECA1008887F2 /* Flickr.xcdatamodeld */,
+				0F55E0922833EDB0008887F2 /* Common */,
+				0F55E0992833EE11008887F2 /* Externals */,
+				0F55E09C2833EE46008887F2 /* Scenes */,
 			);
 			path = Flickr;
 			sourceTree = "<group>";
@@ -128,6 +119,113 @@
 				0F55E0852833ECA2008887F2 /* FlickrUITestsLaunchTests.swift */,
 			);
 			path = FlickrUITests;
+			sourceTree = "<group>";
+		};
+		0F55E0922833EDB0008887F2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E0982833EDF9008887F2 /* Extensions */,
+				0F55E0932833EDBB008887F2 /* Application */,
+				0F55E0962833EDDC008887F2 /* Configuration */,
+				0F55E0972833EDEC008887F2 /* Resources */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0F55E0932833EDBB008887F2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E0942833EDC4008887F2 /* Core */,
+				0F55E0952833EDCA008887F2 /* Coordinator */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		0F55E0942833EDC4008887F2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E05F2833ECA0008887F2 /* AppDelegate.swift */,
+				0F55E0612833ECA0008887F2 /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0F55E0952833EDCA008887F2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0F55E0962833EDDC008887F2 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E0702833ECA2008887F2 /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		0F55E0972833EDEC008887F2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E06D2833ECA2008887F2 /* LaunchScreen.storyboard */,
+				0F55E06B2833ECA2008887F2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0F55E0982833EDF9008887F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0F55E0992833EE11008887F2 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E09A2833EE1C008887F2 /* Network */,
+				0F55E09B2833EE21008887F2 /* DataPersistence */,
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
+		0F55E09A2833EE1C008887F2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0F55E09B2833EE21008887F2 /* DataPersistence */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E0682833ECA1008887F2 /* Flickr.xcdatamodeld */,
+			);
+			path = DataPersistence;
+			sourceTree = "<group>";
+		};
+		0F55E09C2833EE46008887F2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0F55E09D2833EE50008887F2 /* PhotoList */,
+				0F55E09E2833EE5C008887F2 /* PhotoDetails */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0F55E09D2833EE50008887F2 /* PhotoList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PhotoList;
+			sourceTree = "<group>";
+		};
+		0F55E09E2833EE5C008887F2 /* PhotoDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PhotoDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +334,6 @@
 			files = (
 				0F55E06F2833ECA2008887F2 /* LaunchScreen.storyboard in Resources */,
 				0F55E06C2833ECA2008887F2 /* Assets.xcassets in Resources */,
-				0F55E0672833ECA1008887F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +358,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F55E0642833ECA1008887F2 /* ViewController.swift in Sources */,
 				0F55E0602833ECA0008887F2 /* AppDelegate.swift in Sources */,
 				0F55E06A2833ECA1008887F2 /* Flickr.xcdatamodeld in Sources */,
 				0F55E0622833ECA0008887F2 /* SceneDelegate.swift in Sources */,
@@ -301,14 +397,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0F55E0652833ECA1008887F2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F55E0662833ECA1008887F2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0F55E06D2833ECA2008887F2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -441,16 +529,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GLBMX2MFLL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Flickr/Info.plist;
+				INFOPLIST_FILE = Flickr/Common/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,16 +558,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GLBMX2MFLL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Flickr/Info.plist;
+				INFOPLIST_FILE = Flickr/Common/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
