@@ -10,7 +10,7 @@ import Alamofire
 
 enum PhotosListRequest: Endpoint {
 
-    case fetchPhotos
+    case fetchPhotos(page: Int, perPage: Int)
 
     var path: String {
         switch self {
@@ -28,12 +28,12 @@ enum PhotosListRequest: Endpoint {
     var parameters: Parameters? {
         var param = defaultParams
         switch  self {
-        case .fetchPhotos:
+        case .fetchPhotos(let page, let perPage):
             param = ["method": "flickr.photos.getRecent",
                     "format": "json",
                     "nojsoncallback": 50,
-                    "page": 1,
-                    "per_page": 20,
+                    "page": page,
+                    "per_page": perPage,
                     "api_key": Constants.apiKey]
         }
 

@@ -16,6 +16,8 @@ class PhotosListViewController: UIViewController {
     @IBOutlet weak var photosTableView: UITableView!
     @IBOutlet weak var indicator: BPCircleActivityIndicator!
 
+    @IBOutlet weak var searchText: UITextField!
+    
     let refreshControl = UIRefreshControl()
 
     override func viewDidAppear(_ animated: Bool) {
@@ -33,9 +35,10 @@ class PhotosListViewController: UIViewController {
         bindIndicator()
         bindErrorMessage()
         
-        // viewModel.viewDidLoad()
         bindTableView()
-
+        
+        bindSearch()
+        
         setupRefershControl()
         
     }
@@ -87,7 +90,7 @@ class PhotosListViewController: UIViewController {
             guard let indexPath = indexPath.element else { return }
             self?.viewModel.didSelectItemAtIndexPath(indexPath)
         }.disposed(by: disposeBag)
-     
+        
     }
 
     func showIndicator() {
@@ -100,12 +103,20 @@ class PhotosListViewController: UIViewController {
         indicator.stop()
     }
 
+    func bindSearch() {
+        searchText.rx.text.orEmpty
+            .throttle(RxTimeInterval.seconds(2), latest: true, scheduler: MainScheduler.instance)
+                .subscribe(onNext: { searchValue in
+                    print(searchValue)
+                }, onDisposed: nil)
+            .disposed(by: disposeBag)
+    }
+    
 }
 
-extension PhotosListViewController: UITableViewDelegate {
-
+extension PhotosListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row % 5 == 0 && indexPath.row != 0 {
+        if viewModel.photoViewModelAtIndexPath(indexPath).isAdBanner {
             // Ad Banner
             return 120
         } else {
@@ -113,4 +124,7 @@ extension PhotosListViewController: UITableViewDelegate {
         }
     }
 
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        viewModel.didScroll(indexPath: indexPath)
+    }
 }

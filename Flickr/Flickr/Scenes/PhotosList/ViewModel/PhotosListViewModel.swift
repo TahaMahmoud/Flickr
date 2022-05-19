@@ -18,6 +18,7 @@ protocol PhotosListViewModelOutput {
 
 protocol PhotosListViewModelInput {
     func viewDidLoad()
+    func didScroll(indexPath: IndexPath)
     func didSelectItemAtIndexPath(_ indexPath: IndexPath)
 }
 
@@ -25,6 +26,8 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
 
     private let coordinator: PhotosListCoordinatorProtocol
     let disposeBag = DisposeBag()
+    
+    let perPage = 20
     
     var photos: BehaviorRelay<[PhotoCellViewModel]> = .init(value: [])
     var navigateToItemDetails: PublishSubject<PhotoCellViewModel> = .init()
@@ -47,45 +50,49 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         
         indicator.onNext(true)
         
+        let fetchedPhotos = photos.value.count
+        
+        // Calculate Page No
+        let page = ( fetchedPhotos / perPage ) + 1
+        
         if Helper.checkConnection() {
-            fetchRemotePhotos()
+            fetchRemotePhotos(page: page)
         } else {
             
         }
     }
     
-    private func fetchRemotePhotos() {
-        photosListInteractor.fetchRemotePhotos().subscribe{ (response) in
+    private func fetchRemotePhotos(page: Int) {
+        
+        photosListInteractor.fetchRemotePhotos(page: page, perPage: perPage).subscribe{ (response) in
+        
+            var photosList: [PhotoCellViewModel] = self.photos.value
             
-            var photosList: [PhotoCellViewModel] = []
-            var index = 0
-            var isAdBanner = false
-            
+
             for photo in response.element?.photos?.photo ?? [] {
                 
                 var photoURL = ""
-                
-                if index == 5 {
-                    // Add Ad Banner
-                    photoURL = "https://media-exp1.licdn.com/dms/image/C561BAQEC_N7NCtL19w/company-background_10000/0/1581693327818?e=2147483647&v=beta&t=zPGQL4hWdt6htCExvThJgSDgjb8OnRyire4UkzzRHT8"
-                    isAdBanner = true
-                } else {
                     photoURL = "http://farm\(photo.farm ?? 0).static.flickr.com/\(photo.server ?? "")/\(photo.id ?? "")_\(photo.secret ?? "").jpg"
-                    isAdBanner = false
-                }
                 
-                index = index + 1
-                
-                photosList.append(PhotoCellViewModel(photoURL: photoURL, isAdBanner: isAdBanner))
+                photosList.append(PhotoCellViewModel(photoURL: photoURL, isAdBanner: false))
             }
             
-            self.photos.accept(photosList)
+            let adBanner = PhotoCellViewModel(photoURL: "https://media-exp1.licdn.com/dms/image/C561BAQEC_N7NCtL19w/company-background_10000/0/1581693327818?e=2147483647&v=beta&t=zPGQL4hWdt6htCExvThJgSDgjb8OnRyire4UkzzRHT8", isAdBanner: true)
+
+            // Add Ad Banner to PhotosList
+            var newPhotosList: [PhotoCellViewModel] = []
+            
+            for i in stride(from: 1, to: photosList.count, by: 5) {
+                newPhotosList.append(contentsOf: photosList[0...4])
+                newPhotosList.append(adBanner)
+            }
+
+            self.photos.accept(newPhotosList)
             
             self.indicator.onNext(false)
             
         }.disposed(by: disposeBag)
     }
-
     
     func photoViewModelAtIndexPath(_ indexPath: IndexPath) -> PhotoCellViewModel {
         return PhotoCellViewModel(photoURL: photos.value[indexPath.row].photoURL ?? "", isAdBanner: photos.value[indexPath.row].isAdBanner)
@@ -93,6 +100,13 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
 
     func didSelectItemAtIndexPath(_ indexPath: IndexPath) {
         coordinator.pushToPhotoDetails(with: "")
+    }
+
+    func didScroll(indexPath: IndexPath) {
+        // Pagination
+        if indexPath.row == photos.value.count - 3 && photos.value.count != 3 {
+            fetchPhotos()
+        }
     }
 
 }

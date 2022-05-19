@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F01409D283623FE00EABB88 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01409C283623FE00EABB88 /* CustomView.swift */; };
 		0F11479C28356C9200493EE7 /* PhotosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11479A28356C9200493EE7 /* PhotosListViewController.swift */; };
 		0F11479D28356C9200493EE7 /* PhotosListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F11479B28356C9200493EE7 /* PhotosListViewController.xib */; };
 		0F1147A128356CF300493EE7 /* PhotosListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147A028356CF300493EE7 /* PhotosListCoordinator.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F01409C283623FE00EABB88 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		0F11479A28356C9200493EE7 /* PhotosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewController.swift; sourceTree = "<group>"; };
 		0F11479B28356C9200493EE7 /* PhotosListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosListViewController.xib; sourceTree = "<group>"; };
 		0F1147A028356CF300493EE7 /* PhotosListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListCoordinator.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			children = (
 				0FBF42002834DFFB00D56203 /* UITableView+RegisterCell.swift */,
 				0FBF42022834E01100D56203 /* UIImage+CornerRadius.swift */,
+				0F01409C283623FE00EABB88 /* CustomView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				0FBF420F2834E06D00D56203 /* CircleLayer.swift in Sources */,
 				0F55E06A2833ECA1008887F2 /* Flickr.xcdatamodeld in Sources */,
 				0FBF42132834E0D500D56203 /* Endpoint.swift in Sources */,
+				0F01409D283623FE00EABB88 /* CustomView.swift in Sources */,
 				0FBF420C2834E06D00D56203 /* CircleLotateLayer.swift in Sources */,
 				0FBF42152834E0F200D56203 /* NetworkManager.swift in Sources */,
 				0F55E0622833ECA0008887F2 /* SceneDelegate.swift in Sources */,

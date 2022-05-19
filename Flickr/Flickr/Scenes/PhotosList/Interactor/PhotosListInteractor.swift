@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol PhotosListInteractorProtocol: AnyObject {
-    func fetchRemotePhotos() -> Observable<(PhotosListModel)>
+    func fetchRemotePhotos(page: Int, perPage: Int) -> Observable<(PhotosListModel)>
 }
 
 class PhotosListInteractor: PhotosListInteractorProtocol {
@@ -22,9 +22,9 @@ class PhotosListInteractor: PhotosListInteractorProtocol {
 
     var request: PhotosListRequest?
 
-    func fetchRemotePhotos() -> Observable<(PhotosListModel)> {
+    func fetchRemotePhotos(page: Int, perPage: Int) -> Observable<(PhotosListModel)> {
         return Observable.create {[weak self] (observer) -> Disposable in
-            self?.networkManager.callRequest(PhotosListModel.self, endpoint: PhotosListRequest.fetchPhotos) { (result) in
+            self?.networkManager.callRequest(PhotosListModel.self, endpoint: PhotosListRequest.fetchPhotos(page: page, perPage: perPage)) { (result) in
                 switch result {
                 case .success(let value):
                     observer.onNext(value)
