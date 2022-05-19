@@ -22,6 +22,9 @@ protocol PhotosListViewModelInput {
     func didSelectItemAtIndexPath(_ indexPath: IndexPath)
     
     func search(searchText: String)
+    
+    func didImageDownloaded(photoURL: String)
+
 }
 
 class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
@@ -57,9 +60,10 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         let page = ( fetchedPhotos / perPage ) + 1
         
         if Helper.checkConnection() {
+            removeCachedPhotos()
             fetchRemotePhotos(page: page)
         } else {
-            
+            fetchCachedPhotos()
         }
     }
     
@@ -89,6 +93,28 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
             self.indicator.onNext(false)
             
         }.disposed(by: disposeBag)
+    }
+    
+    private func fetchCachedPhotos() {
+        
+        photosListInteractor.fetchCachedPhotos().subscribe{ (response) in
+        
+            var photosList: [PhotoCellViewModel] = self.photos.value
+            
+            for photoURL in response.element ?? [] {
+                                
+                photosList.append(PhotoCellViewModel(photoURL: photoURL, isAdBanner: false))
+            }
+            
+            print("Cached Photos")
+            print(photosList)
+            
+            self.photos.accept(photosList)
+            
+            self.indicator.onNext(false)
+            
+        }.disposed(by: disposeBag)
+        
     }
     
     func photoViewModelAtIndexPath(_ indexPath: IndexPath) -> PhotoCellViewModel {
@@ -157,4 +183,17 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         
     }
 
+    func didImageDownloaded(photoURL: String) {
+        if Helper.checkConnection() {
+            photosListInteractor.savePhoto(photoURL: photoURL).subscribe{ (response) in
+                print("\(photoURL) ... Downloaded")
+            }.disposed(by: disposeBag)
+        }
+    }
+    
+    func removeCachedPhotos() {
+        photosListInteractor.removeAllPhotos().subscribe { (respone) in
+            print("Cached Photos Removed")
+        }.disposed(by: disposeBag)
+    }
 }
