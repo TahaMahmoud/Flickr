@@ -32,7 +32,6 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
     let perPage = 20
     
     var photos: BehaviorRelay<[PhotoCellViewModel]> = .init(value: [])
-    var navigateToItemDetails: PublishSubject<PhotoCellViewModel> = .init()
 
     var indicator: PublishSubject<Bool> = .init()
     var error: PublishSubject<String> = .init()

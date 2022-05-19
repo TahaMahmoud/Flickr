@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
 class PhotosListViewController: UIViewController {
 
@@ -88,11 +89,31 @@ class PhotosListViewController: UIViewController {
         
         photosTableView.rx.itemSelected.subscribe {[weak self]  (indexPath) in
             guard let indexPath = indexPath.element else { return }
-            self?.viewModel.didSelectItemAtIndexPath(indexPath)
+            let cell = self?.photosTableView.cellForRow(at: indexPath) as? PhotoTableViewCell
+            self?.showFullScreen(photoView: cell?.photoView ?? UIImageView())
         }.disposed(by: disposeBag)
         
     }
 
+    func showFullScreen(photoView: UIImageView) {
+        let newImageView = UIImageView(image: photoView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
+    @objc func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
     func showIndicator() {
         indicator.isHidden = false
         indicator.animate()
