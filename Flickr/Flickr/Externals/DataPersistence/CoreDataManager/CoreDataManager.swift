@@ -14,12 +14,12 @@ class CoreDataManager {
     var photosEntity: NSEntityDescription
     
     //Prepare the request of type NSFetchRequest  for the entity
-    let fetchPhotossRequest: NSFetchRequest<NSFetchRequestResult>
+    let fetchPhotosRequest: NSFetchRequest<NSFetchRequestResult>
         
     init() {
         self.managedContext = CoreDataManagerConfig.managedContext
-        self.photosEntity = CoreDataManagerConfig.citiesEntity
-        self.fetchPhotossRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PhotosData")
+        self.photosEntity = CoreDataManagerConfig.photosEntity
+        self.fetchPhotosRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PhotosData")
     }
     
     func saveContext() -> Bool {

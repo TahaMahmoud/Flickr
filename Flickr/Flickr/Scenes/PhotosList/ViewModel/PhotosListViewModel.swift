@@ -17,9 +17,8 @@ protocol PhotosListViewModelOutput {
 }
 
 protocol PhotosListViewModelInput {
-    func viewDidLoad()
+    func viewDidLoad(refresh: Bool)
     func didScroll(searchText: String, indexPath: IndexPath)
-    func didSelectItemAtIndexPath(_ indexPath: IndexPath)
     
     func search(searchText: String)
     
@@ -46,13 +45,19 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         self.coordinator = coordinator
     }
     
-    func viewDidLoad(){
-        fetchPhotos()
+    func viewDidLoad(refresh: Bool){
+        fetchPhotos(refresh: refresh)
     }
     
-    private func fetchPhotos() {
+    private func fetchPhotos(refresh: Bool) {
         
-        indicator.onNext(true)
+        if photos.value.count == 0 || refresh {
+            
+            photos.accept([])
+            indicator.onNext(true)
+        
+            indicator.onNext(true)
+        }
         
         let fetchedPhotos = photos.value.count
         
@@ -121,17 +126,13 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         return PhotoCellViewModel(photoURL: photos.value[indexPath.row].photoURL ?? "", isAdBanner: photos.value[indexPath.row].isAdBanner)
     }
 
-    func didSelectItemAtIndexPath(_ indexPath: IndexPath) {
-        coordinator.pushToPhotoDetails(with: "")
-    }
-
     func didScroll(searchText: String, indexPath: IndexPath) {
         // Pagination
         if indexPath.row == photos.value.count - 3 && photos.value.count != 3 {
             if searchText != "" {
                 search(searchText: searchText)
             } else {
-                fetchPhotos()
+                fetchPhotos(refresh: false)
             }
         }
     }
@@ -148,8 +149,6 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         
         if Helper.checkConnection() {
             fetchSearch(searchText: searchText, page: page)
-        } else {
-            
         }
 
     }
@@ -185,9 +184,16 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
 
     func didImageDownloaded(photoURL: String) {
         if Helper.checkConnection() {
-            photosListInteractor.savePhoto(photoURL: photoURL).subscribe{ (response) in
-                print("\(photoURL) ... Downloaded")
+            // Check if already downloaded
+            photosListInteractor.isPhotoStored(photoURL: photoURL).subscribe { [weak self] (response) in
+                if !(response.element ?? true) {
+                    self?.photosListInteractor.savePhoto(photoURL: photoURL).subscribe{ (response) in
+                        print("\(photoURL) ... Downloaded")
+                    }.disposed(by: self!.disposeBag)
+                }
+                
             }.disposed(by: disposeBag)
+                        
         }
     }
     

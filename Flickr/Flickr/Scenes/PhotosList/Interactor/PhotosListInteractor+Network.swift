@@ -17,6 +17,7 @@ protocol PhotosListInteractorProtocol: AnyObject {
     func savePhoto(photoURL: String) -> Observable<Bool>
     func removeAllPhotos() -> Observable<Bool>
 
+    func isPhotoStored(photoURL: String) -> Observable<Bool>
 }
 
 class PhotosListInteractor: PhotosListInteractorProtocol {
