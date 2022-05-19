@@ -107,7 +107,7 @@ class PhotosListViewController: UIViewController {
         searchText.rx.text.orEmpty
             .throttle(RxTimeInterval.seconds(2), latest: true, scheduler: MainScheduler.instance)
                 .subscribe(onNext: { searchValue in
-                    print(searchValue)
+                    self.viewModel.search(searchText: searchValue)
                 }, onDisposed: nil)
             .disposed(by: disposeBag)
     }
@@ -126,7 +126,7 @@ extension PhotosListViewController: UITableViewDelegate{
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel.didScroll(indexPath: indexPath)
+        viewModel.didScroll(searchText: searchText.text ?? "", indexPath: indexPath)
     }
     
 }

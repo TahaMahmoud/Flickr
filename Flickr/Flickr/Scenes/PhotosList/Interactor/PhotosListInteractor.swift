@@ -9,7 +9,8 @@ import Foundation
 import RxSwift
 
 protocol PhotosListInteractorProtocol: AnyObject {
-    func fetchRemotePhotos(page: Int, perPage: Int) -> Observable<(PhotosListModel)>
+    func fetchRecentPhotos(page: Int, perPage: Int) -> Observable<(PhotosListModel)>
+    func searchPhotos(searchText: String, page: Int, perPage: Int) -> Observable<(PhotosListModel)>
 }
 
 class PhotosListInteractor: PhotosListInteractorProtocol {
@@ -22,7 +23,7 @@ class PhotosListInteractor: PhotosListInteractorProtocol {
 
     var request: PhotosListRequest?
 
-    func fetchRemotePhotos(page: Int, perPage: Int) -> Observable<(PhotosListModel)> {
+    func fetchRecentPhotos(page: Int, perPage: Int) -> Observable<(PhotosListModel)> {
         return Observable.create {[weak self] (observer) -> Disposable in
             self?.networkManager.callRequest(PhotosListModel.self, endpoint: PhotosListRequest.fetchPhotos(page: page, perPage: perPage)) { (result) in
                 switch result {
@@ -38,5 +39,19 @@ class PhotosListInteractor: PhotosListInteractorProtocol {
 
     }
     
-    
+    func searchPhotos(searchText: String, page: Int, perPage: Int) -> Observable<(PhotosListModel)> {
+        return Observable.create {[weak self] (observer) -> Disposable in
+            self?.networkManager.callRequest(PhotosListModel.self, endpoint: PhotosListRequest.searchPhotos(searchText: searchText, page: page, perPage: perPage)) { (result) in
+                switch result {
+                case .success(let value):
+                    observer.onNext(value)
+                case .failure(let error):
+                    print(error)
+                    observer.onError(error)
+                }
+            }
+            return Disposables.create()
+        }
+
+    }
 }
