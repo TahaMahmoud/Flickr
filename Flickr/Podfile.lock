@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (5.5.0)
+  - CRNotifications (1.2.1)
+  - Kingfisher (7.1.2)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - CRNotifications
+  - Kingfisher
+  - RxCocoa
+  - RxSwift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CRNotifications
+    - Kingfisher
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  CRNotifications: 2799786cb63e104c75699843d8928afd680182f3
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+
+PODFILE CHECKSUM: ec9927c3406d967e839c7d144c92bebc4aff0b52
+
+COCOAPODS: 1.11.2
