@@ -26,7 +26,7 @@ class PhotosListViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        viewModel.viewDidLoad()
+        viewModel.viewDidLoad(refresh: false)
     }
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class PhotosListViewController: UIViewController {
     }
     
     @objc private func refresh(_ sender: Any) {
-        viewModel.viewDidLoad()
+        viewModel.viewDidLoad(refresh: true)
         refreshControl.endRefreshing()
     }
     

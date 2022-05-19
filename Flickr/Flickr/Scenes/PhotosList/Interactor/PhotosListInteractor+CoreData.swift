@@ -16,7 +16,7 @@ extension PhotosListInteractor {
 
             do {
 
-                let result = try self?.coreDataManager.managedContext.fetch((self?.coreDataManager.fetchPhotossRequest)!)
+                let result = try self?.coreDataManager.managedContext.fetch((self?.coreDataManager.fetchPhotosRequest)!)
                 
                 for photosData in result as! [NSManagedObject] {
                     
@@ -59,7 +59,7 @@ extension PhotosListInteractor {
     
     func removeAllPhotos() -> Observable<Bool> {
         
-        let removeRequest = NSBatchDeleteRequest(fetchRequest: (self.coreDataManager.fetchPhotossRequest))
+        let removeRequest = NSBatchDeleteRequest(fetchRequest: (self.coreDataManager.fetchPhotosRequest))
         
         return Observable.create {[weak self] (observer) -> Disposable in
             
@@ -80,4 +80,35 @@ extension PhotosListInteractor {
         }
     }
     
+    func isPhotoStored(photoURL: String) -> Observable<Bool> {
+
+        var isExist = false
+        
+        return Observable.create {[weak self] (observer) -> Disposable in
+
+            do {
+
+                let result = try self?.coreDataManager.managedContext.fetch((self?.coreDataManager.fetchPhotosRequest)!)
+                
+                if result?.count ?? 0 > 0 {
+                                        
+                    for photo in result as? [NSManagedObject] ?? []{
+                        let currentPhoto: String = photo.value(forKey: "photoURL") as! String
+                        
+                        if photoURL == currentPhoto {
+                            isExist = true
+                        }
+                    }
+                }
+                
+                observer.onNext(isExist)
+
+            } catch {
+                observer.onError(error)
+            }
+            
+            return Disposables.create()
+        }
+
+    }
 }

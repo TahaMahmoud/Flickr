@@ -334,7 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				0F55E09D2833EE50008887F2 /* PhotosList */,
-				0F55E09E2833EE5C008887F2 /* PhotoDetails */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -349,13 +348,6 @@
 				0FE1AC7628365B19008B4A57 /* Model */,
 			);
 			path = PhotosList;
-			sourceTree = "<group>";
-		};
-		0F55E09E2833EE5C008887F2 /* PhotoDetails */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PhotoDetails;
 			sourceTree = "<group>";
 		};
 		0FBF41FF2834DFF200D56203 /* UI */ = {

@@ -18,6 +18,6 @@ class CoreDataManagerConfig {
     static let managedContext = appDelegate!.persistentContainer.viewContext
         
     //Now let’s create an entity and new user records.
-    static let citiesEntity = NSEntityDescription.entity(forEntityName: "PhotosData", in: managedContext)!
+    static let photosEntity = NSEntityDescription.entity(forEntityName: "PhotosData", in: managedContext)!
         
 }
