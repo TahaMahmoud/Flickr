@@ -148,7 +148,13 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         let page = ( fetchedPhotos / perPage ) + 1
         
         if Helper.checkConnection() {
-            fetchSearch(searchText: searchText, page: page)
+            
+            if searchText == "" {
+                fetchRemotePhotos(page: page)
+            } else {
+                fetchSearch(searchText: searchText, page: page)
+            }
+            
         }
 
     }
