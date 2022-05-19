@@ -21,7 +21,7 @@ protocol Endpoint: URLRequestConvertible {
 
 extension Endpoint {
     var baseURL: String {
-        return "https://api.npoint.io/"
+        return "https://www.flickr.com/services/rest"
     }
     
     var requestURL: URL {

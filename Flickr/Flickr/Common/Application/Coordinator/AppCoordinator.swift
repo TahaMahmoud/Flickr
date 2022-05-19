@@ -34,7 +34,7 @@ class AppCoordinator: Coordinator {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
                 
-        // let photosListCoordinator = PhotosListCoordinator(navigationController: navigationController)
-        // coordinate(to: photosListCoordinator)
+        let photosListCoordinator = PhotosListCoordinator(navigationController: navigationController)
+        coordinate(to: photosListCoordinator)
     }
 }
