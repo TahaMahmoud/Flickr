@@ -80,14 +80,18 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
             let adBanner = PhotoCellViewModel(photoURL: "https://media-exp1.licdn.com/dms/image/C561BAQEC_N7NCtL19w/company-background_10000/0/1581693327818?e=2147483647&v=beta&t=zPGQL4hWdt6htCExvThJgSDgjb8OnRyire4UkzzRHT8", isAdBanner: true)
 
             // Add Ad Banner to PhotosList
+
+            /*
             var newPhotosList: [PhotoCellViewModel] = []
             
-            for i in stride(from: 1, to: photosList.count, by: 5) {
-                newPhotosList.append(contentsOf: photosList[0...4])
+            for i in stride(from: 0, to: photosList.count - 1, by: 5) {
+                newPhotosList.append(contentsOf: photosList[i...i+4])
                 newPhotosList.append(adBanner)
+                print("Ad Banner at index \(i)")
             }
-
-            self.photos.accept(newPhotosList)
+            */
+            
+            self.photos.accept(photosList)
             
             self.indicator.onNext(false)
             

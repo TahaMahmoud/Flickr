@@ -115,6 +115,7 @@ class PhotosListViewController: UIViewController {
 }
 
 extension PhotosListViewController: UITableViewDelegate{
+   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if viewModel.photoViewModelAtIndexPath(indexPath).isAdBanner {
             // Ad Banner
@@ -127,4 +128,5 @@ extension PhotosListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         viewModel.didScroll(indexPath: indexPath)
     }
+    
 }
