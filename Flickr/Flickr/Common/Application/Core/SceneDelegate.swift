@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,6 +14,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var appCoordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        let cache = ImageCache.default
+
+        // Constrain Memory Cache to 10 MB
+        cache.memoryStorage.config.totalCostLimit = 1024 * 1024 * 10
+
+        // Constrain Disk Cache to 100 MB
+        cache.diskStorage.config.sizeLimit = 1024 * 1024 * 100
 
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)

@@ -10,6 +10,8 @@ import Kingfisher
 
 class PhotoTableViewCell: UITableViewCell {
 
+    var viewModel: PhotosListViewModel!
+    
     @IBOutlet weak var photoView: CornerRadiusImage!
     
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
@@ -22,7 +24,6 @@ class PhotoTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     func configure(viewModel: PhotoCellViewModel) {
@@ -35,8 +36,15 @@ class PhotoTableViewCell: UITableViewCell {
         }
 
         guard let imageURL = URL(string: viewModel.photoURL ?? "") else {return}
-        photoView.kf.setImage(with: imageURL)
-
+        photoView.kf.setImage(with: imageURL) { result in
+            switch result {
+            case .success:
+                self.viewModel.didImageDownloaded(photoURL: viewModel.photoURL ?? "")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
     
 }

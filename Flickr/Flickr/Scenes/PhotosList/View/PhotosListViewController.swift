@@ -82,6 +82,7 @@ class PhotosListViewController: UIViewController {
                     cellIdentifier: "PhotoTableViewCell",
                     cellType: PhotoTableViewCell.self)) { row, element, cell in
                 let indexPath = IndexPath(row: row, section: 0)
+                        cell.viewModel = self.viewModel
                         cell.configure(viewModel: self.viewModel.photoViewModelAtIndexPath(indexPath))
             }
             .disposed(by: disposeBag)
