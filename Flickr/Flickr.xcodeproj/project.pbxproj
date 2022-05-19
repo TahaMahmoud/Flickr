@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F11479C28356C9200493EE7 /* PhotosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11479A28356C9200493EE7 /* PhotosListViewController.swift */; };
+		0F11479D28356C9200493EE7 /* PhotosListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F11479B28356C9200493EE7 /* PhotosListViewController.xib */; };
+		0F1147A128356CF300493EE7 /* PhotosListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147A028356CF300493EE7 /* PhotosListCoordinator.swift */; };
+		0F1147A428356E2200493EE7 /* PhotosListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147A328356E2200493EE7 /* PhotosListInteractor.swift */; };
+		0F1147A628356F0500493EE7 /* PhotosListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147A528356F0500493EE7 /* PhotosListRequest.swift */; };
+		0F1147A828356F9D00493EE7 /* PhotosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147A728356F9D00493EE7 /* PhotosListViewModel.swift */; };
+		0F1147AB2835755100493EE7 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147A92835755100493EE7 /* PhotoTableViewCell.swift */; };
+		0F1147AC2835755100493EE7 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1147AA2835755100493EE7 /* PhotoTableViewCell.xib */; };
+		0F1147AE283578FF00493EE7 /* PhotosListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147AD283578FF00493EE7 /* PhotosListModel.swift */; };
+		0F1147B028357ADE00493EE7 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1147AF28357ADE00493EE7 /* PhotoCellViewModel.swift */; };
 		0F55E0602833ECA0008887F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55E05F2833ECA0008887F2 /* AppDelegate.swift */; };
 		0F55E0622833ECA0008887F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55E0612833ECA0008887F2 /* SceneDelegate.swift */; };
 		0F55E06A2833ECA1008887F2 /* Flickr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F55E0682833ECA1008887F2 /* Flickr.xcdatamodeld */; };
@@ -51,6 +61,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F11479A28356C9200493EE7 /* PhotosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewController.swift; sourceTree = "<group>"; };
+		0F11479B28356C9200493EE7 /* PhotosListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosListViewController.xib; sourceTree = "<group>"; };
+		0F1147A028356CF300493EE7 /* PhotosListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListCoordinator.swift; sourceTree = "<group>"; };
+		0F1147A328356E2200493EE7 /* PhotosListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListInteractor.swift; sourceTree = "<group>"; };
+		0F1147A528356F0500493EE7 /* PhotosListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListRequest.swift; sourceTree = "<group>"; };
+		0F1147A728356F9D00493EE7 /* PhotosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewModel.swift; sourceTree = "<group>"; };
+		0F1147A92835755100493EE7 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		0F1147AA2835755100493EE7 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
+		0F1147AD283578FF00493EE7 /* PhotosListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListModel.swift; sourceTree = "<group>"; };
+		0F1147AF28357ADE00493EE7 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
 		0F55E05C2833ECA0008887F2 /* Flickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F55E05F2833ECA0008887F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F55E0612833ECA0008887F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +143,35 @@
 				6D4E2612D03AF0A28983F002 /* Pods_FlickrTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0F11479E28356CC300493EE7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0F11479A28356C9200493EE7 /* PhotosListViewController.swift */,
+				0F11479B28356C9200493EE7 /* PhotosListViewController.xib */,
+				0F1147A92835755100493EE7 /* PhotoTableViewCell.swift */,
+				0F1147AA2835755100493EE7 /* PhotoTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F11479F28356CCA00493EE7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0F1147A728356F9D00493EE7 /* PhotosListViewModel.swift */,
+				0F1147AF28357ADE00493EE7 /* PhotoCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0F1147A228356E1200493EE7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0F1147A328356E2200493EE7 /* PhotosListInteractor.swift */,
+				0F1147A528356F0500493EE7 /* PhotosListRequest.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		0F55E0532833ECA0008887F2 = {
@@ -269,17 +318,22 @@
 		0F55E09C2833EE46008887F2 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				0F55E09D2833EE50008887F2 /* PhotoList */,
+				0F55E09D2833EE50008887F2 /* PhotosList */,
 				0F55E09E2833EE5C008887F2 /* PhotoDetails */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		0F55E09D2833EE50008887F2 /* PhotoList */ = {
+		0F55E09D2833EE50008887F2 /* PhotosList */ = {
 			isa = PBXGroup;
 			children = (
+				0F1147A228356E1200493EE7 /* Interactor */,
+				0F11479F28356CCA00493EE7 /* ViewModel */,
+				0F11479E28356CC300493EE7 /* View */,
+				0F1147A028356CF300493EE7 /* PhotosListCoordinator.swift */,
+				0F1147AD283578FF00493EE7 /* PhotosListModel.swift */,
 			);
-			path = PhotoList;
+			path = PhotosList;
 			sourceTree = "<group>";
 		};
 		0F55E09E2833EE5C008887F2 /* PhotoDetails */ = {
@@ -440,7 +494,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1147AC2835755100493EE7 /* PhotoTableViewCell.xib in Resources */,
 				0F55E06F2833ECA2008887F2 /* LaunchScreen.storyboard in Resources */,
+				0F11479D28356C9200493EE7 /* PhotosListViewController.xib in Resources */,
 				0F55E06C2833ECA2008887F2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,8 +629,16 @@
 				0FBF42172834E10200D56203 /* NetworkError.swift in Sources */,
 				0FBF42012834DFFB00D56203 /* UITableView+RegisterCell.swift in Sources */,
 				0FBF420B2834E06D00D56203 /* CircleLotationSet.swift in Sources */,
+				0F1147A628356F0500493EE7 /* PhotosListRequest.swift in Sources */,
+				0F1147A828356F9D00493EE7 /* PhotosListViewModel.swift in Sources */,
 				0FBF420D2834E06D00D56203 /* CommonAnimation.swift in Sources */,
+				0F1147A128356CF300493EE7 /* PhotosListCoordinator.swift in Sources */,
 				0FBF41FC2834DE7E00D56203 /* AppCoordinator.swift in Sources */,
+				0F1147B028357ADE00493EE7 /* PhotoCellViewModel.swift in Sources */,
+				0F1147A428356E2200493EE7 /* PhotosListInteractor.swift in Sources */,
+				0F1147AB2835755100493EE7 /* PhotoTableViewCell.swift in Sources */,
+				0F1147AE283578FF00493EE7 /* PhotosListModel.swift in Sources */,
+				0F11479C28356C9200493EE7 /* PhotosListViewController.swift in Sources */,
 				0F55E0602833ECA0008887F2 /* AppDelegate.swift in Sources */,
 				0FBF41FE2834DF6400D56203 /* Helper.swift in Sources */,
 				0FBF42112834E0A500D56203 /* Constants.swift in Sources */,
