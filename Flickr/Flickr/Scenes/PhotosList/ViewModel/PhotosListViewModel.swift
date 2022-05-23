@@ -49,7 +49,7 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         fetchPhotos(refresh: refresh)
     }
     
-    private func fetchPhotos(refresh: Bool) {
+    func fetchPhotos(refresh: Bool) {
         
         if photos.value.count == 0 || refresh {
             
@@ -72,13 +72,12 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         }
     }
     
-    private func fetchRemotePhotos(page: Int) {
+    func fetchRemotePhotos(page: Int) {
         
         photosListInteractor.fetchRecentPhotos(page: page, perPage: perPage).subscribe{ (response) in
         
             var photosList: [PhotoCellViewModel] = self.photos.value
             
-
             for photo in response.element?.photos?.photo ?? [] {
                 
                 var photoURL = ""
@@ -100,7 +99,7 @@ class PhotosListViewModel: PhotosListViewModelInput, PhotosListViewModelOutput {
         }.disposed(by: disposeBag)
     }
     
-    private func fetchCachedPhotos() {
+    func fetchCachedPhotos() {
         
         photosListInteractor.fetchCachedPhotos().subscribe{ (response) in
         
