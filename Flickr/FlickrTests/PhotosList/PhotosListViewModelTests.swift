@@ -44,4 +44,53 @@ class PhotosListViewModelTests: XCTestCase {
         XCTAssertNotNil(sut)
     }
 
+    func testViewDidLoad() {
+        
+    }
+    
+    func testFetchPhotosRefresh() {
+        sut.fetchPhotos(refresh: true)
+    }
+
+    func testFetchPhotosFirstTime() {
+        sut.fetchPhotos(refresh: false)
+    }
+    
+    func testfetchRemotePhotos() {
+        sut.fetchRemotePhotos(page: 1)
+        XCTAssert
+    }
+    
+    func testFetchCachedPhotos() {
+        
+    }
+    
+    func testIsBannerAdded() {
+        
+    }
+    
+    func testPhotoViewModelAtIndexPath() {
+        
+    }
+    
+    func testDidScroll() {
+        
+    }
+    
+    func testSearch() {
+        
+    }
+    
+    func testFetchSearch() {
+        
+    }
+    
+    func testDidImageDownloaded() {
+        
+    }
+    
+    func testRemoveCachedPhotos() {
+        
+    }
+    
 }
